@@ -40,6 +40,12 @@ document.getElementById("btn-convert").addEventListener("click", function () {
       }
     }
 
+    const nya = word.slice(word.length - 3);
+    if (nya == "nya") {
+      const x = word.replace("nya", ".x");
+      word = x;
+    }
+
     res.push(word);
   }
 
