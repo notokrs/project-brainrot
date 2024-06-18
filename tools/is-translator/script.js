@@ -4,15 +4,11 @@ const vReplace = ["p", "b"];
 const source = document.getElementById("text");
 const result = document.getElementById("result");
 
-const alert = document.getElementById("alert");
-const msg = document.getElementById("message");
-
 document.getElementById("btn-convert").addEventListener("click", function () {
   const wordArr = source.value.toLowerCase().split(" ");
 
   if (wordArr == "") {
-    msg.innerText = "Teks sumber kosong!";
-    alert.style.display = "block";
+    alert("Teks sumber kosong!");
 
     return;
   }
@@ -55,10 +51,26 @@ document.getElementById("btn-convert").addEventListener("click", function () {
 document.getElementById("copy-result").addEventListener("click", () => {
   if (result.value != "") {
     navigator.clipboard.writeText(result.value);
-
-    msg.innerText = "Teks berhasil disalin!";
-    alert.style.display = "block";
-
-    return;
+    alert("Teks berhasil disalin!");
+  } else {
+    alert("Teks hasil kosong!");
   }
 });
+
+function alert(message) {
+  const parent = document.getElementById("alert");
+  const alert = `<div
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
+        <p class="m-0">${message}</p>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>`;
+
+  parent.innerHTML = alert;
+}
